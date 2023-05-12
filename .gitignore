@@ -1,0 +1,6 @@
+# vs code settings directory
+/.vscode/
+/.vscode/**
+
+# api keys
+/config/apikeys.ini
