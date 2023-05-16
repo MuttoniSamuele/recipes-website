@@ -1,7 +1,7 @@
-import loadHeader from "./htmlLoader.js";
+import * as UTILS from "./utils.js";
 
 function main() {
-  loadHeader("./header.html", document.getElementById("header-placeholder"));
-  loadHeader("./footer.html", document.getElementById("footer-placeholder"));
+  UTILS.loadHtml("./templates/header.html", document.getElementById("header-placeholder"));
+  UTILS.loadHtml("./templates/footer.html", document.getElementById("footer-placeholder"));
 }
 main();

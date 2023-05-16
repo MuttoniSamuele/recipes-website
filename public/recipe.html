@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading recipe...</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/main.js" type="module"></script>
+  <script src="./js/recipe.js" type="module"></script>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <main>
+    <h2 id="title-txt"></h2>
+    <button>Save</button>
+
+    <section>
+      <img id="recipe-img">
+      <div>
+        <h3>General information</h3>
+        <p>Preparation: <span id="preparation-mins-txt"></span> minutes</p>
+        <p>Cooking: <span id="cooking-mins-txt"></span> minutes</p>
+        <p>Ready in: <span id="ready-mins-txt"></span> minutes</p>
+        <p id="characterstics-txt"></p>
+        <a id="source-link" href="" target="_blank"></a>
+      </div>
+    </section>
+
+    <section>
+      <h3>Ingredients</h3>
+      <ul id="ingredients-list"></ul>
+    </section>
+
+    <section>
+      <h3>Instructions</h3>
+      <p id="instructions-txt"></p>
+    </section>
+
+    <section>
+      <h3>Similar Recipes</h3>
+      <div id="similar-recipes"></div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+</body>
+
+</html>

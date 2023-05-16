@@ -1,12 +1,8 @@
 export default class Recipe {
   #id;
   #title;
-  #summary;
   #instructions;
   #image;
-  #diets;
-  #cuisines;
-  #dishTypes;
   #extendedIngredients;
   #cookingMinutes;
   #preparationMinutes;
@@ -21,13 +17,9 @@ export default class Recipe {
   constructor(json) {
     this.#id = parseInt(json.id);
     this.#title = String(json.title);
-    this.#summary = String(json.summary);
     this.#instructions = String(json.instructions);
     this.#image = String(json.image);
-    this.#diets = json.diets.map((v) => String(v));
-    this.#cuisines = json.cuisines.map((v) => String(v));
-    this.#dishTypes = json.dishTypes.map((v) => String(v));
-    this.#extendedIngredients = json.extendedIngredients.map((v) => String(v.original));
+    this.#extendedIngredients = json.extendedIngredients?.map((v) => String(v.original)) || [];
     this.#cookingMinutes = parseInt(json.cookingMinutes);
     this.#preparationMinutes = parseInt(json.preparationMinutes);
     this.#readyInMinutes = parseInt(json.readyInMinutes);
@@ -47,28 +39,12 @@ export default class Recipe {
     return this.#title;
   }
 
-  get summary() {
-    return this.#summary;
-  }
-
   get instructions() {
     return this.#instructions;
   }
 
   get image() {
     return this.#image;
-  }
-
-  get diets() {
-    return [...this.#diets];
-  }
-
-  get cuisines() {
-    return [...this.#cuisines];
-  }
-
-  get dishTypes() {
-    return [...this.#dishTypes];
   }
 
   get extendedIngredients() {
