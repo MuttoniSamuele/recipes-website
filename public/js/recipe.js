@@ -45,10 +45,14 @@ async function renderRecipe(recipe) {
 async function main() {
   const recipeId = getRecipeId();
   if (recipeId === null) {
-    location.href = "/";
     return;
   }
-  const recipe = await API.getRecipeInformation(recipeId);
+  let recipe;
+  try {
+    recipe = await API.getRecipeInformation(recipeId);
+  } catch (e) {
+    return;
+  }
   renderRecipe(recipe);
 }
 main();

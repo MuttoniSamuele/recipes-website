@@ -9,7 +9,11 @@ export async function rawRequest(path, params = {}) {
   if (!res.ok) {
     throw new Error("Request error");
   }
-  return await res.json();
+  const json = await res.json();
+  if (json.status === "failure") {
+    throw new Error("Request error");
+  }
+  return json;
 }
 
 export async function searchRecipes(query, offset = 0, number = 10, params = {}) {

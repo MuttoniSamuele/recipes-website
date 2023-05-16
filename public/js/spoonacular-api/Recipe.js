@@ -1,8 +1,7 @@
-export default class Recipe {
-  #id;
-  #title;
+import RecipePreview from "./RecipePreview.js";
+
+export default class Recipe extends RecipePreview {
   #instructions;
-  #image;
   #extendedIngredients;
   #cookingMinutes;
   #preparationMinutes;
@@ -15,10 +14,8 @@ export default class Recipe {
   #sourceUrl;
 
   constructor(json) {
-    this.#id = parseInt(json.id);
-    this.#title = String(json.title);
+    super(json);
     this.#instructions = String(json.instructions);
-    this.#image = String(json.image);
     this.#extendedIngredients = json.extendedIngredients?.map((v) => String(v.original)) || [];
     this.#cookingMinutes = parseInt(json.cookingMinutes);
     this.#preparationMinutes = parseInt(json.preparationMinutes);
@@ -31,20 +28,8 @@ export default class Recipe {
     this.#sourceUrl = String(json.sourceUrl);
   }
 
-  get id() {
-    return this.#id;
-  }
-
-  get title() {
-    return this.#title;
-  }
-
   get instructions() {
     return this.#instructions;
-  }
-
-  get image() {
-    return this.#image;
   }
 
   get extendedIngredients() {
