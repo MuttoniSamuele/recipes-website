@@ -32,7 +32,7 @@ function conditionallyRender(element, text, isHtml = false) {
   }
 }
 
-async function renderRecipe(recipe) {
+function renderRecipe(recipe) {
   UTILS.setVisibility(loadingElem, false);
   UTILS.setVisibility(recipeElem, true);
   titleElem.innerText = document.title = recipe.title;
