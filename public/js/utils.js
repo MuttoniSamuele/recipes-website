@@ -20,3 +20,14 @@ export function parseUrl(url) {
   }
   return [urlParams, queryParams];
 }
+
+export function setVisibility(element, isVisible) {
+  if (!(element instanceof Element)) {
+    return;
+  }
+  if (isVisible) {
+    element.classList.remove("hidden");
+  } else {
+    element.classList.add("hidden");
+  }
+}

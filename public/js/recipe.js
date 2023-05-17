@@ -1,6 +1,8 @@
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
 
+const loadingElem = document.getElementById("loading-div");
+const recipeElem = document.getElementById("recipe-div");
 const titleElem = document.getElementById("title-txt");
 const recipeImgElem = document.getElementById("recipe-img");
 const prepMinsElem = document.getElementById("preparation-mins-txt");
@@ -18,12 +20,26 @@ function getRecipeId() {
   return isNaN(recipeId) ? null : recipeId;
 }
 
+function conditionallyRender(element, text, isHtml = false) {
+  if (text === null || text === undefined || text == "null" || text == -1) {
+    UTILS.setVisibility(element.parentElement, false);
+    return;
+  }
+  if (isHtml) {
+    element.innerHTML = text;
+  } else {
+    element.innerText = text;
+  }
+}
+
 async function renderRecipe(recipe) {
+  UTILS.setVisibility(loadingElem, false);
+  UTILS.setVisibility(recipeElem, true);
   titleElem.innerText = document.title = recipe.title;
   recipeImgElem.src = recipe.image;
-  prepMinsElem.innerText = recipe.preparationMinutes;
-  cookingMinsElem.innerText = recipe.cookingMinutes;
-  readyMinsElem.innerText = recipe.readyInMinutes;
+  conditionallyRender(prepMinsElem, recipe.preparationMinutes);
+  conditionallyRender(cookingMinsElem, recipe.cookingMinutes);
+  conditionallyRender(readyMinsElem, recipe.readyInMinutes);
   let characts = [
     [recipe.dairyFree, "dairy free"],
     [recipe.glutenFree, "gluten free"],
@@ -39,7 +55,7 @@ async function renderRecipe(recipe) {
     ingredientsListElem.appendChild(liElem);
     liElem.innerText = ingr;
   });
-  instructionsElem.innerHTML = recipe.instructions;
+  conditionallyRender(instructionsElem, recipe.instructions, true);
 }
 
 async function main() {

@@ -15,36 +15,41 @@
   <div id="header-placeholder"></div>
 
   <main>
-    <h2 id="title-txt"></h2>
-    <button>Save</button>
+    <div id="loading-div">
+      <span>Loading...</span>
+    </div>
 
-    <section>
-      <img id="recipe-img">
-      <div>
-        <h3>General information</h3>
-        <p>Preparation: <span id="preparation-mins-txt"></span> minutes</p>
-        <p>Cooking: <span id="cooking-mins-txt"></span> minutes</p>
-        <p>Ready in: <span id="ready-mins-txt"></span> minutes</p>
-        <p id="characterstics-txt"></p>
-        <a id="source-link" href="" target="_blank"></a>
-      </div>
-    </section>
-
-    <section>
-      <h3>Ingredients</h3>
-      <ul id="ingredients-list"></ul>
-    </section>
-
-    <section>
-      <h3>Instructions</h3>
-      <p id="instructions-txt"></p>
-    </section>
-
-    <section>
-      <h3>Similar Recipes</h3>
-      <div id="similar-recipes"></div>
-    </section>
-
+    <div id="recipe-div" class="hidden">
+      <h2 id="title-txt"></h2>
+      <button>Save</button>
+  
+      <section>
+        <img id="recipe-img">
+        <div>
+          <h3>General information</h3>
+          <p>Preparation: <span id="preparation-mins-txt"></span> minutes</p>
+          <p>Cooking: <span id="cooking-mins-txt"></span> minutes</p>
+          <p>Ready in: <span id="ready-mins-txt"></span> minutes</p>
+          <p id="characterstics-txt"></p>
+          <a id="source-link" href="" target="_blank"></a>
+        </div>
+      </section>
+  
+      <section>
+        <h3>Ingredients</h3>
+        <ul id="ingredients-list"></ul>
+      </section>
+  
+      <section>
+        <h3>Instructions</h3>
+        <p id="instructions-txt"></p>
+      </section>
+  
+      <section>
+        <h3>Similar Recipes</h3>
+        <div id="similar-recipes"></div>
+      </section>  
+    </div>
   </main>
 
   <div id="footer-placeholder"></div>
