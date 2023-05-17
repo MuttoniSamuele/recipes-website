@@ -1,25 +1,14 @@
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
+import { renderRecipePreview } from "./recipeNodes.js";
 
 const RECIPES_PER_REQUEST = 10;
 
 const recipesElem = document.getElementById("recipes");
-let recipeTemplateNode = null;
 
 function getSearch() {
   const [_urlParams, queryParams] = UTILS.parseUrl(location.href);
   return queryParams.q || "";
-}
-
-async function renderRecipePreview(recipe) {
-  if (!recipeTemplateNode) {
-    recipeTemplateNode = await UTILS.loadHtml("./templates/recipePreview.html");
-  }
-  const recipeElem = recipeTemplateNode.cloneNode(true);
-  recipeElem.querySelector("[data-preview-img]").src = recipe.image;
-  recipeElem.querySelector("[data-preview-title]").innerText = recipe.title;
-  recipeElem.querySelector("[data-preview-url]").href = `/recipe.html?id=${recipe.id}`;
-  return recipeElem;
 }
 
 async function renderRecipePreviews(recipes) {
@@ -47,7 +36,7 @@ function setupFetchOnScroll(search) {
       isFetching = true;
       await fetchAndRenderRecipes(search, offset);
       offset += RECIPES_PER_REQUEST;
-      setTimeout(() => isFetching = false, 500);
+      isFetching = false;
     }
   });
 }

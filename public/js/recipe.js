@@ -1,5 +1,6 @@
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
+import { isSaved, saveRecipe, unsaveRecipe } from "./recipesStorage.js";
 
 const loadingElem = document.getElementById("loading-div");
 const recipeElem = document.getElementById("recipe-div");
@@ -20,13 +21,12 @@ function getRecipeId() {
   return isNaN(recipeId) ? null : recipeId;
 }
 
-function setupBackButton() {
-  document.getElementById("back-btn").addEventListener("click", () => {
-    // TODO: make your own history stack
-    if (history.length > 1) {
-      history.back();
+function setupSaveButton(id) {
+  document.getElementById("save-btn").addEventListener("click", () => {
+    if (isSaved(id)) {
+      unsaveRecipe(id);
     } else {
-      location.href = "/";
+      saveRecipe(id);
     }
   });
 }
@@ -70,11 +70,11 @@ function renderRecipe(recipe) {
 }
 
 async function main() {
-  setupBackButton();
   const recipeId = getRecipeId();
   if (recipeId === null) {
     return;
   }
+  setupSaveButton(recipeId);
   let recipe;
   try {
     recipe = await API.getRecipeInformation(recipeId);
