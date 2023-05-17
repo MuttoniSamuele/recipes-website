@@ -20,6 +20,17 @@ function getRecipeId() {
   return isNaN(recipeId) ? null : recipeId;
 }
 
+function setupBackButton() {
+  document.getElementById("back-btn").addEventListener("click", () => {
+    // TODO: make your own history stack
+    if (history.length > 1) {
+      history.back();
+    } else {
+      location.href = "/";
+    }
+  });
+}
+
 function conditionallyRender(element, text, isHtml = false) {
   if (text === null || text === undefined || text == "null" || text == -1) {
     UTILS.setVisibility(element.parentElement, false);
@@ -59,6 +70,7 @@ function renderRecipe(recipe) {
 }
 
 async function main() {
+  setupBackButton();
   const recipeId = getRecipeId();
   if (recipeId === null) {
     return;

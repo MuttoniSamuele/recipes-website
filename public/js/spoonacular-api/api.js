@@ -16,7 +16,7 @@ export async function rawRequest(path, params = {}) {
   return json;
 }
 
-export async function searchRecipes(query, offset = 0, number = 10, params = {}) {
+export async function searchRecipes(query, number = 10, offset = 0, params = {}) {
   const json = await rawRequest("complexSearch", {
     query: String(query),
     offset: parseInt(offset),
