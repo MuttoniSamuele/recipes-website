@@ -1,6 +1,9 @@
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
 import { isSaved, saveRecipe, unsaveRecipe } from "./recipesStorage.js";
+import { renderRecipePreview } from "./recipeNodes.js";
+
+const SIMILAR_RECIPES_CNT = 10;
 
 const loadingElem = document.getElementById("loading-div");
 const recipeElem = document.getElementById("recipe-div");
@@ -32,7 +35,7 @@ function setupSaveButton(id) {
 }
 
 function conditionallyRender(element, text, isHtml = false) {
-  if (text === null || text === undefined || text == "null" || text == -1) {
+  if (text === null || text === undefined || text == -1) {
     UTILS.setVisibility(element.parentElement, false);
     return;
   }
@@ -69,6 +72,12 @@ function renderRecipe(recipe) {
   conditionallyRender(instructionsElem, recipe.instructions, true);
 }
 
+async function renderRecipePreviews(recipes) {
+  for (const recipe of recipes) {
+    similarRecipesElem.appendChild(await renderRecipePreview(recipe));
+  }
+}
+
 async function main() {
   const recipeId = getRecipeId();
   if (recipeId === null) {
@@ -82,5 +91,7 @@ async function main() {
     return;
   }
   renderRecipe(recipe);
+  const similarRecipes = await API.getSimilarRecipes(recipeId, SIMILAR_RECIPES_CNT);
+  await renderRecipePreviews(similarRecipes);
 }
 main();

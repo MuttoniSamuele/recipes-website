@@ -6,7 +6,7 @@ export default class RecipePreview {
   constructor(json) {
     this.#id = parseInt(json.id);
     this.#title = String(json.title);
-    this.#image = String(json.image);
+    this.#image = json.image ? String(json.image) : null;
   }
 
   get id() {

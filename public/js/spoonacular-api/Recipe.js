@@ -15,7 +15,7 @@ export default class Recipe extends RecipePreview {
 
   constructor(json) {
     super(json);
-    this.#instructions = String(json.instructions);
+    this.#instructions = json.instructions ? String(json.instructions) : null;
     this.#extendedIngredients = json.extendedIngredients?.map((v) => String(v.original)) || [];
     this.#cookingMinutes = parseInt(json.cookingMinutes);
     this.#preparationMinutes = parseInt(json.preparationMinutes);

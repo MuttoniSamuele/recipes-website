@@ -1,13 +1,9 @@
 import * as API from "./spoonacular-api/api.js";
-import { getRecipes } from "./recipesStorage.js";
 import { renderRecipePreview } from "./recipeNodes.js";
 
-const recipesElem = document.getElementById("recipes");
+const DISCOVER_RECIPES_CNT = 10;
 
-async function fetchRecipes() {
-  const promises = getRecipes().map((id) => API.getRecipeInformation(id));
-  return await Promise.all(promises);
-}
+const recipesElem = document.getElementById("discover-recipes");
 
 async function renderRecipePreviews(recipes) {
   for (const recipe of recipes) {
@@ -16,7 +12,7 @@ async function renderRecipePreviews(recipes) {
 }
 
 async function main() {
-  const recipes = await fetchRecipes();
+  const recipes = await API.getRandomRecipes(DISCOVER_RECIPES_CNT);
   await renderRecipePreviews(recipes);
 }
 main();

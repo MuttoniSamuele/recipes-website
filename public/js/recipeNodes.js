@@ -7,7 +7,13 @@ export async function renderRecipePreview(recipe) {
     recipePreviewNode = await UTILS.loadHtml("./templates/recipePreview.html");
   }
   const recipeElem = recipePreviewNode.cloneNode(true);
-  recipeElem.querySelector("[data-preview-img]").src = recipe.image;
+  const imgElem = recipeElem.querySelector("[data-preview-img]");
+  console.log(typeof recipe.image)
+  if (recipe.image) {
+    imgElem.src = recipe.image;
+  } else {
+    imgElem.remove();
+  }
   recipeElem.querySelector("[data-preview-title]").innerText = recipe.title;
   recipeElem.querySelector("[data-preview-url]").href = `/recipe.html?id=${recipe.id}`;
   return recipeElem;
