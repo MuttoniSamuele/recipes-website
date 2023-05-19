@@ -1,9 +1,10 @@
 :root {
   --bg-header: #edd9a3;
   --bg-footer: #b3b3b3;
-  --fg-footer: #1a1a1a;
-  --card: #f5f5f5;
-  --header-height: 5rem;
+  --cool-black: #1a1a1a;
+  --very-light-grey: #f5f5f5;
+  --orange: #FF835D;
+  --header-height: 5.5rem;
 }
 
 *, *::before, *::after {
@@ -49,17 +50,62 @@ header {
   align-items: center;
 }
 
-header hgroup {
+header a {
+  color: var(--cool-black);
+  text-decoration: none;
+}
+
+header .brand-logo {
   display: flex;
   align-items: center;
+  color: var(--cool-black);
+  text-decoration: none;
 }
 
 header h1 {
   margin-left: 1rem;
 }
 
+
 header form {
   margin-left: auto;
+}
+
+header form input {
+  width: 20vw;
+  font-size: 1rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--bg-footer);
+  border-radius: 3px;
+  color: var(--cool-black);
+}
+
+header form input:focus {
+  outline: 2px solid var(--orange);
+}
+
+header form button {
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  background-color: var(--very-light-grey);
+  border: 1px solid var(--bg-footer);
+  border-radius: 3px;
+  color: var(--cool-black);
+}
+
+header form button:hover {
+  filter: brightness(0.93);
+  cursor: pointer;
+}
+
+
+header .saved-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  color: var(--orange);
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 
@@ -70,7 +116,7 @@ header form {
 footer {
   margin-top: auto;
   background-color: var(--bg-footer);
-  color: var(--fg-footer);
+  color: var(--cool-black);
   font-size: 1.05rem;
   padding: 1rem 0;
   display: flex;
@@ -78,12 +124,12 @@ footer {
 }
 
 footer a, footer a:hover, footer a:visited {
-  text-decoration: none;
-  color: var(--fg-footer);
+  text-decoration: underline;
+  color: var(--cool-black);
 }
 
 footer a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 
@@ -92,7 +138,7 @@ footer a:hover {
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
-  padding: 3rem 0;
+  padding: 3rem 0 4rem 0;
 }
 
 .home img {
@@ -144,7 +190,7 @@ footer a:hover {
 }
 
 .about, .discover {
-  margin-bottom: 5rem;
+  margin-bottom: 7rem;
 }
 
 
@@ -167,7 +213,7 @@ footer a:hover {
 .recipe-preview {
   width: 15vw;
   margin: 0.6rem;
-  border: 1px solid var(--card);
+  border: 1px solid var(--very-light-grey);
   border-radius: 4px;
 }
 
@@ -180,7 +226,7 @@ footer a:hover {
 }
 
 .recipe-preview a:hover {
-  color: #FF835D;
+  color: var(--orange);
 }
 
 .recipe-preview .img-wrapper {
