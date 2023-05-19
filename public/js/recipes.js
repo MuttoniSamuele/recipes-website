@@ -2,7 +2,7 @@ import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
 import { renderRecipePreview } from "./recipeNodes.js";
 
-const RECIPES_PER_REQUEST = 10;
+const RECIPES_PER_REQUEST = 16;
 
 const recipesElem = document.getElementById("recipes");
 

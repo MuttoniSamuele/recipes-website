@@ -16,6 +16,8 @@ function setupBackButton() {
 }
 
 function main() {
+  // TODO: export header and footer loading function in different module (add a callback)
+  // TODO: write something when recipes are found
   UTILS.loadHtml("./templates/header.html", document.getElementById("header-placeholder"));
   UTILS.loadHtml("./templates/footer.html", document.getElementById("footer-placeholder"));
   setupBackButton();

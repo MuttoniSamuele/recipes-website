@@ -8,7 +8,6 @@ export async function renderRecipePreview(recipe) {
   }
   const recipeElem = recipePreviewNode.cloneNode(true);
   const imgElem = recipeElem.querySelector("[data-preview-img]");
-  console.log(typeof recipe.image)
   if (recipe.image) {
     imgElem.src = recipe.image;
   } else {
