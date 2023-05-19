@@ -1,12 +1,11 @@
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
 import { isSaved, saveRecipe, unsaveRecipe } from "./recipesStorage.js";
-import { renderRecipePreview } from "./recipeNodes.js";
-
-const SIMILAR_RECIPES_CNT = 10;
 
 const loadingElem = document.getElementById("loading-div");
 const recipeElem = document.getElementById("recipe-div");
+const emptySaveElem = document.getElementById("empty-save-icon");
+const fullSaveElem = document.getElementById("full-save-icon");
 const titleElem = document.getElementById("title-txt");
 const recipeImgElem = document.getElementById("recipe-img");
 const prepMinsElem = document.getElementById("preparation-mins-txt");
@@ -16,12 +15,21 @@ const characteristicsElem = document.getElementById("characterstics-txt");
 const sourceElem = document.getElementById("source-link");
 const ingredientsListElem = document.getElementById("ingredients-list");
 const instructionsElem = document.getElementById("instructions-txt");
-const similarRecipesElem = document.getElementById("similar-recipes");
 
 function getRecipeId() {
   const [_urlParams, queryParams] = UTILS.parseUrl(location.href);
   const recipeId = parseInt(queryParams.id);
   return isNaN(recipeId) ? null : recipeId;
+}
+
+function renderSaveButton(recipeId) {
+  if (isSaved(recipeId)) {
+    UTILS.setVisibility(emptySaveElem, false);
+    UTILS.setVisibility(fullSaveElem, true);
+  } else {
+    UTILS.setVisibility(emptySaveElem, true);
+    UTILS.setVisibility(fullSaveElem, false);
+  }
 }
 
 function setupSaveButton(id) {
@@ -31,6 +39,7 @@ function setupSaveButton(id) {
     } else {
       saveRecipe(id);
     }
+    renderSaveButton(id);
   });
 }
 
@@ -70,12 +79,7 @@ function renderRecipe(recipe) {
     liElem.innerText = ingr;
   });
   conditionallyRender(instructionsElem, recipe.instructions, true);
-}
-
-async function renderRecipePreviews(recipes) {
-  for (const recipe of recipes) {
-    similarRecipesElem.appendChild(await renderRecipePreview(recipe));
-  }
+  renderSaveButton(recipe.id);
 }
 
 async function main() {
@@ -91,7 +95,5 @@ async function main() {
     return;
   }
   renderRecipe(recipe);
-  const similarRecipes = await API.getSimilarRecipes(recipeId, SIMILAR_RECIPES_CNT);
-  await renderRecipePreviews(similarRecipes);
 }
 main();

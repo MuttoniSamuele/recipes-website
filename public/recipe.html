@@ -15,41 +15,47 @@
   <div id="header-placeholder"></div>
 
   <main>
-    <button id="back-btn">Back</button>
+    <a id="back-btn">&lt; Back</a>
 
     <div id="loading-div">
       <span>Loading...</span>
     </div>
 
-    <div id="recipe-div" class="hidden">
-      <h2 id="title-txt"></h2>
-      <button id="save-btn">Save</button>
-  
-      <section>
+    <div id="recipe-div" class="hidden">  
+      <section class="recipe-general">
         <img id="recipe-img">
-        <div>
+        <div class="general">
+          <hgroup>
+            <h2 id="title-txt"></h2>
+            <button id="save-btn">
+              <svg fill="#000000" width="1.5rem" height="auto" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
+                <path id="empty-save-icon" d="m960.481 1412.11 511.758 307.054V170.586c0-31.274-25.588-56.862-56.862-56.862H505.586c-31.274 0-56.862 25.588-56.862 56.862v1548.578l511.757-307.055ZM1585.963 1920 960.48 1544.711 335 1920V170.586C335 76.536 411.536 0 505.586 0h909.79c94.05 0 170.587 76.536 170.587 170.586V1920Z" fill-rule="evenodd"/>
+                <path id="full-save-icon" class="hidden" d="M1585.963 1920 960.48 1544.711 335 1920V170.586C335 76.536 411.536 0 505.586 0h909.79c94.05 0 170.587 76.536 170.587 170.586V1920Z" fill-rule="evenodd"/>
+              </svg>
+            </button>
+          </hgroup>
+          <hr>
           <h3>General information</h3>
           <p>Preparation: <span id="preparation-mins-txt"></span> minutes</p>
           <p>Cooking: <span id="cooking-mins-txt"></span> minutes</p>
           <p>Ready in: <span id="ready-mins-txt"></span> minutes</p>
+          <p>Source: <a id="source-link" href="" target="_blank"></a></p>
           <p id="characterstics-txt"></p>
-          <a id="source-link" href="" target="_blank"></a>
         </div>
       </section>
   
+      <hr>
+
       <section>
         <h3>Ingredients</h3>
         <ul id="ingredients-list"></ul>
       </section>
   
+      <hr>
+
       <section>
         <h3>Instructions</h3>
         <p id="instructions-txt"></p>
-      </section>
-  
-      <section>
-        <h3>Similar Recipes</h3>
-        <div id="similar-recipes"></div>
       </section>
     </div>
   </main>

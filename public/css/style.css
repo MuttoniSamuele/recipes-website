@@ -14,6 +14,7 @@
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -81,7 +82,8 @@ header form input {
 }
 
 header form input:focus {
-  outline: 2px solid var(--orange);
+  outline: 1px solid var(--orange);
+  border-color: var(--orange);
 }
 
 header form button {
@@ -194,6 +196,17 @@ footer a:hover {
 }
 
 
+#back-btn {
+  color: #565959;
+  text-decoration: none;
+}
+
+#back-btn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 .recipes-wrapper {
   display: flex;
   justify-content: center;
@@ -247,4 +260,66 @@ footer a:hover {
   flex: 1;
   padding: 0.8rem 0.5rem;
   font-weight: 600;
+}
+
+
+hr {
+  background-color: transparent;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top: 1px solid #BBBFBF;
+  display: block;
+  height: 1px;
+  line-height: 19px;
+  margin-bottom: 14px;
+  margin-top: 0;
+}
+
+#recipe-div section {
+  margin: 1rem 0 2rem 0;
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+#recipe-div section h3 {
+  font-size: 1.3rem;
+}
+
+.recipe-general {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.recipe-general img {
+  object-fit: cover;
+}
+
+.recipe-general hgroup {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 0.5rem 0;
+}
+
+#save-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0 0.3rem 0 auto;
+  outline: none;
+  align-self: end;
+}
+
+#save-btn:hover {
+  cursor: pointer;
+}
+
+.recipe-general h2 {
+  font-size: 1.6rem;
+  margin: 0;
+}
+
+.recipe-general .general {
+  flex: 1;
+  margin-left: 2rem;
 }
