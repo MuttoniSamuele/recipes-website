@@ -1,3 +1,4 @@
+import { loadHeaderAndFooter, setupBackButton } from "./components.js";
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
 import { isSaved, saveRecipe, unsaveRecipe } from "./recipesStorage.js";
@@ -83,6 +84,8 @@ function renderRecipe(recipe) {
 }
 
 async function main() {
+  loadHeaderAndFooter();
+  setupBackButton();
   const recipeId = getRecipeId();
   if (recipeId === null) {
     return;

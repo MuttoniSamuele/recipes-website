@@ -1,3 +1,4 @@
+import { loadHeaderAndFooter, setupBackButton } from "./components.js";
 import * as API from "./spoonacular-api/api.js";
 import { getRecipes } from "./recipesStorage.js";
 import { renderRecipePreview } from "./recipeNodes.js";
@@ -16,6 +17,9 @@ async function renderRecipePreviews(recipes) {
 }
 
 async function main() {
+  // TODO: write something when no recipes are found
+  loadHeaderAndFooter();
+  setupBackButton();
   const recipes = await fetchRecipes();
   await renderRecipePreviews(recipes);
 }

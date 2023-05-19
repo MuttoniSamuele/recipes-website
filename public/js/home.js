@@ -1,3 +1,4 @@
+import { loadHeaderAndFooter } from "./components.js";
 import * as API from "./spoonacular-api/api.js";
 import { renderRecipePreview } from "./recipeNodes.js";
 
@@ -12,6 +13,7 @@ async function renderRecipePreviews(recipes) {
 }
 
 async function main() {
+  loadHeaderAndFooter();
   const recipes = await API.getRandomRecipes(DISCOVER_RECIPES_CNT);
   await renderRecipePreviews(recipes);
 }

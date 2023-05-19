@@ -1,3 +1,4 @@
+import { loadHeaderAndFooter } from "./components.js";
 import * as API from "./spoonacular-api/api.js";
 import * as UTILS from "./utils.js";
 import { renderRecipePreview } from "./recipeNodes.js";
@@ -43,12 +44,10 @@ function setupFetchOnScroll(search) {
 
 function main() {
   const search = getSearch();
+  loadHeaderAndFooter().then(() => {
+    document.getElementById("search-input").value = search;
+  });
   setupFetchOnScroll(search);
   fetchAndRenderRecipes(search);
-  // TODO: set the current search as the search bar value
-  // const e = document.getElementById("search-input");
-  // if (e) {
-  //   e.value = search;
-  // }
 }
 main();
