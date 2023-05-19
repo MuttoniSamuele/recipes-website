@@ -3,6 +3,7 @@
   --bg-footer: #b3b3b3;
   --fg-footer: #1a1a1a;
   --card: #f5f5f5;
+  --header-height: 5rem;
 }
 
 *, *::before, *::after {
@@ -29,7 +30,7 @@ main, header, footer {
 
 main {
   flex: 1;
-  margin-top: 5rem;
+  margin-top: var(--header-height);
   padding: 1rem 2rem;
 }
 
@@ -39,6 +40,7 @@ main {
   z-index: 10;
   top: 0;
   width: 100%;
+  height: var(--header-height);
   background-color: var(--bg-header);
 }
 
@@ -85,6 +87,67 @@ footer a:hover {
 }
 
 
+.home {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 3rem 0;
+}
+
+.home img {
+  width: 40%;
+  height: auto;
+  border-radius: 10rem;
+}
+
+.home-phrase {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-phrase h1 {
+  display: block;
+  text-align: center;
+  font-size: 4.5rem;
+  color: #5C8001;
+  margin: 0 auto;
+}
+
+.home-phrase a {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  background-color: #0EB1D2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.home-phrase a:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+
+.about h2, .discover h2 {
+  font-size: 1.6rem;
+}
+
+.about p {
+  font-size: 1.4rem;
+}
+
+.about, .discover {
+  margin-bottom: 5rem;
+}
+
+
 .recipes-wrapper {
   display: flex;
   justify-content: center;
@@ -93,6 +156,12 @@ footer a:hover {
 .recipes-grid {
   display: flex;
   flex-wrap: wrap;
+}
+
+.recipes-line {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .recipe-preview {
