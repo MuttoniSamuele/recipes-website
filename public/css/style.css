@@ -276,6 +276,34 @@ hr {
   margin-top: 0;
 }
 
+
+#loading-div {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  display: block;
+  border: 0.7rem solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 0.7rem solid #3498db;
+  width: 5rem;
+  height: 5rem;
+  animation: loading 1s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 #recipe-div section {
   margin: 1rem 0 2rem 0;
   padding: 0 0.5rem;
