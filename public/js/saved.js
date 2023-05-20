@@ -5,22 +5,21 @@ import { renderRecipePreview } from "./recipeNodes.js";
 
 const recipesElem = document.getElementById("recipes");
 
-async function fetchRecipes() {
-  const promises = getRecipes().map((id) => API.getRecipeInformation(id));
-  return await Promise.all(promises);
+async function fetchAndRenderRecipePreview(id) {
+  const recipe = await API.getRecipeInformation(id);
+  recipesElem.appendChild(await renderRecipePreview(recipe));
 }
 
-async function renderRecipePreviews(recipes) {
-  for (const recipe of recipes) {
-    recipesElem.appendChild(await renderRecipePreview(recipe));
-  }
+function renderRecipePreviews() {
+  getRecipes().map((id) => {
+    fetchAndRenderRecipePreview(id);
+  });
 }
 
 async function main() {
   // TODO: write something when no recipes are found
   loadHeaderAndFooter();
   setupBackButton();
-  const recipes = await fetchRecipes();
-  await renderRecipePreviews(recipes);
+  renderRecipePreviews();
 }
 main();
