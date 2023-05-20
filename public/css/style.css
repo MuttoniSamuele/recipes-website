@@ -220,11 +220,13 @@ footer a:hover {
 .recipes-line {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: auto !important;
+  width: 100%;
 }
 
 .recipe-preview {
   width: 15vw;
+  min-width: 15vw;
   margin: 0.6rem;
   border: 1px solid var(--very-light-grey);
   border-radius: 4px;
